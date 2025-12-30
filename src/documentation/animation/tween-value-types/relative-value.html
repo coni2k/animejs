@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Anime.js</title>
+    <style>
+      .clock {
+        z-index: 2;
+        position: relative;
+        width: 4rem;
+        height: 4rem;
+        margin-left: 1px;
+        border-radius: 50%;
+        border: 0.25rem solid rgb(255, 168, 40);
+      }
+
+      .clock::after {
+        content: "";
+        position: absolute;
+        top: 0.25rem;
+        left: calc(2rem - (0.25rem/2));
+        width: 0.25rem;
+        height: 1rem;
+        border-radius: 0.125rem;
+        background-color: rgb(255, 168, 40);
+      }
+    </style>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="large centered row">
+      <div class="clock"></div>
+    </div>
+    <div class="medium row">
+      <fieldset class="controls">
+        <button class="button add">+ 90°</button>
+        <button class="button sub">- 90°</button>
+        <button class="button mul">× .5</button>
+      </fieldset>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs": "/node_modules/animejs/dist/modules/index.js",
+          "animejs/animation": "/node_modules/animejs/dist/modules/animation/index.js",
+          "animejs/timer": "/node_modules/animejs/dist/modules/timer/index.js",
+          "animejs/timeline": "/node_modules/animejs/dist/modules/timeline/index.js",
+          "animejs/animatable": "/node_modules/animejs/dist/modules/animatable/index.js",
+          "animejs/draggable": "/node_modules/animejs/dist/modules/draggable/index.js",
+          "animejs/scope": "/node_modules/animejs/dist/modules/scope/index.js",
+          "animejs/engine": "/node_modules/animejs/dist/modules/engine/index.js",
+          "animejs/events": "/node_modules/animejs/dist/modules/events/index.js",
+          "animejs/easings": "/node_modules/animejs/dist/modules/easings/index.js",
+          "animejs/utils": "/node_modules/animejs/dist/modules/utils/index.js",
+          "animejs/svg": "/node_modules/animejs/dist/modules/svg/index.js",
+          "animejs/text": "/node_modules/animejs/dist/modules/text/index.js",
+          "animejs/waapi": "/node_modules/animejs/dist/modules/waapi/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { animate, utils } from "animejs";
+
+      const [$clock] = utils.$(".clock");
+      const [$add] = utils.$(".add");
+      const [$sub] = utils.$(".sub");
+      const [$mul] = utils.$(".mul");
+
+      const add = () => animate($clock, { rotate: "+=90" });
+      const sub = () => animate($clock, { rotate: "-=90" });
+      const mul = () => animate($clock, { rotate: "*=.5" });
+
+      $add.addEventListener("click", add);
+      $sub.addEventListener("click", sub);
+      $mul.addEventListener("click", mul);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Anime.js</title>
+    <style>
+      .row {
+        display: flex;
+      }
+
+      .square {
+        --rotation: 90deg;
+        --scale: 1.5;
+        border: 10px solid rgb(255, 168, 40);
+        height: calc(2rem - 1px);
+        margin-left: 1px;
+        margin-top: 1px;
+        width: calc(2rem - 1px);
+      }
+
+      :root {
+        --hex-orange-1: #ffa828;
+        --hex-red-1: #ff4b4b;
+      }
+    </style>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="medium justified row">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs": "/node_modules/animejs/dist/modules/index.js",
+          "animejs/animation": "/node_modules/animejs/dist/modules/animation/index.js",
+          "animejs/timer": "/node_modules/animejs/dist/modules/timer/index.js",
+          "animejs/timeline": "/node_modules/animejs/dist/modules/timeline/index.js",
+          "animejs/animatable": "/node_modules/animejs/dist/modules/animatable/index.js",
+          "animejs/draggable": "/node_modules/animejs/dist/modules/draggable/index.js",
+          "animejs/scope": "/node_modules/animejs/dist/modules/scope/index.js",
+          "animejs/engine": "/node_modules/animejs/dist/modules/engine/index.js",
+          "animejs/events": "/node_modules/animejs/dist/modules/events/index.js",
+          "animejs/easings": "/node_modules/animejs/dist/modules/easings/index.js",
+          "animejs/utils": "/node_modules/animejs/dist/modules/utils/index.js",
+          "animejs/svg": "/node_modules/animejs/dist/modules/svg/index.js",
+          "animejs/text": "/node_modules/animejs/dist/modules/text/index.js",
+          "animejs/waapi": "/node_modules/animejs/dist/modules/waapi/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { waapi, animate, stagger } from "animejs";
+
+      waapi.animate(".square", {
+        rotate: "var(--rotation)",
+        borderColor: ["var(--hex-orange-1)", "var(--hex-red-1)"],
+        duration: 500,
+        delay: stagger(100),
+        loop: true,
+      });
+
+      animate(".square", {
+        scale: "var(--scale)",
+        background: ["var(--hex-red-1)", "var(--hex-orange-1)"],
+        duration: 500,
+        delay: stagger(100),
+        loop: true,
+        alternate: true,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Anime.js</title>
+    <style>
+      .square {
+        background-color: rgb(255, 168, 40);
+        width: calc(2rem - 1px);
+        height: calc(2rem - 1px);
+        margin-top: 1px;
+        margin-left: 1px;
+      }
+    </style>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="medium row">
+      <div class="square"></div>
+      <span class="padded label">JS / WAAPI</span>
+    </div>
+    <div class="medium row">
+      <div class="square"></div>
+      <span class="padded label">WAAPI</span>
+    </div>
+
+    <div style="margin-top: 16px">
+      <button id="start">Start</button>
+      <button id="reset" disabled="true">Reset</button>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs": "/node_modules/animejs/dist/modules/index.js",
+          "animejs/animation": "/node_modules/animejs/dist/modules/animation/index.js",
+          "animejs/timer": "/node_modules/animejs/dist/modules/timer/index.js",
+          "animejs/timeline": "/node_modules/animejs/dist/modules/timeline/index.js",
+          "animejs/animatable": "/node_modules/animejs/dist/modules/animatable/index.js",
+          "animejs/draggable": "/node_modules/animejs/dist/modules/draggable/index.js",
+          "animejs/scope": "/node_modules/animejs/dist/modules/scope/index.js",
+          "animejs/engine": "/node_modules/animejs/dist/modules/engine/index.js",
+          "animejs/events": "/node_modules/animejs/dist/modules/events/index.js",
+          "animejs/easings": "/node_modules/animejs/dist/modules/easings/index.js",
+          "animejs/utils": "/node_modules/animejs/dist/modules/utils/index.js",
+          "animejs/svg": "/node_modules/animejs/dist/modules/svg/index.js",
+          "animejs/text": "/node_modules/animejs/dist/modules/text/index.js",
+          "animejs/waapi": "/node_modules/animejs/dist/modules/waapi/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { animate, utils, waapi } from "animejs";
+
+      const [$start] = utils.$("#start");
+      const [$reset] = utils.$("#reset");
+
+      $start.onclick = function () {
+        animate(".square", {
+          x: "15rem", // TranslateX shorthand
+          scale: 1.25,
+          skew: -45,
+          rotate: "1turn",
+          onComplete: () => ($reset.disabled = false),
+        });
+
+        // the WAAPI version is recommanded if you want to animate the transform property directly
+        waapi.animate(".square", {
+          transform: "translateX(15rem) scale(1.25) skew(-45deg) rotate(1turn)",
+          onComplete: () => ($reset.disabled = false),
+        });
+      };
+
+      $reset.onclick = function () {
+        const squares = utils.$(".square");
+        for (const $square of squares) $square.style = "position: relative;";
+        $reset.disabled = true;
+      };
+    </script>
+  </body>
+</html>

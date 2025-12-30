@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Anime.js</title>
+    <style>
+      .text-xl {
+        font-size: 1.5rem;
+        color: currentColor;
+        letter-spacing: 0.06em;
+      }
+    </style>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="large grid centered square-grid">
+      <h2 class="text-xl">HELLO WORLD</h2>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs": "/node_modules/animejs/dist/modules/index.js",
+          "animejs/animation": "/node_modules/animejs/dist/modules/animation/index.js",
+          "animejs/timer": "/node_modules/animejs/dist/modules/timer/index.js",
+          "animejs/timeline": "/node_modules/animejs/dist/modules/timeline/index.js",
+          "animejs/animatable": "/node_modules/animejs/dist/modules/animatable/index.js",
+          "animejs/draggable": "/node_modules/animejs/dist/modules/draggable/index.js",
+          "animejs/scope": "/node_modules/animejs/dist/modules/scope/index.js",
+          "animejs/engine": "/node_modules/animejs/dist/modules/engine/index.js",
+          "animejs/events": "/node_modules/animejs/dist/modules/events/index.js",
+          "animejs/easings": "/node_modules/animejs/dist/modules/easings/index.js",
+          "animejs/utils": "/node_modules/animejs/dist/modules/utils/index.js",
+          "animejs/svg": "/node_modules/animejs/dist/modules/svg/index.js",
+          "animejs/text": "/node_modules/animejs/dist/modules/text/index.js",
+          "animejs/waapi": "/node_modules/animejs/dist/modules/waapi/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { animate, stagger, splitText } from "animejs";
+
+      const { chars } = splitText("h2", { words: false, chars: true });
+
+      animate(chars, {
+        // Property keyframes
+        y: [
+          { to: "-2.75rem", ease: "outExpo", duration: 600 },
+          { to: 0, ease: "outBounce", duration: 800, delay: 100 },
+        ],
+        // Property specific parameters
+        rotate: {
+          from: "-1turn",
+          delay: 0,
+        },
+        delay: stagger(50),
+        ease: "inOutCirc",
+        loopDelay: 1000,
+        loop: true,
+      });
+    </script>
+  </body>
+</html>

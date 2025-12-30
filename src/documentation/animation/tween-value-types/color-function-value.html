@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Anime.js</title>
+    <style>
+      .row {
+        display: flex;
+      }
+
+      .circle {
+        background-color: color(display-p3 1.000000 0.780392 0.188235 / 1.000000);
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+      }
+    </style>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="large justified row">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
+    <div style="margin-top: 16px">
+      <button id="start">Start</button>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs": "/node_modules/animejs/dist/modules/index.js",
+          "animejs/animation": "/node_modules/animejs/dist/modules/animation/index.js",
+          "animejs/timer": "/node_modules/animejs/dist/modules/timer/index.js",
+          "animejs/timeline": "/node_modules/animejs/dist/modules/timeline/index.js",
+          "animejs/animatable": "/node_modules/animejs/dist/modules/animatable/index.js",
+          "animejs/draggable": "/node_modules/animejs/dist/modules/draggable/index.js",
+          "animejs/scope": "/node_modules/animejs/dist/modules/scope/index.js",
+          "animejs/engine": "/node_modules/animejs/dist/modules/engine/index.js",
+          "animejs/events": "/node_modules/animejs/dist/modules/events/index.js",
+          "animejs/easings": "/node_modules/animejs/dist/modules/easings/index.js",
+          "animejs/utils": "/node_modules/animejs/dist/modules/utils/index.js",
+          "animejs/svg": "/node_modules/animejs/dist/modules/svg/index.js",
+          "animejs/text": "/node_modules/animejs/dist/modules/text/index.js",
+          "animejs/waapi": "/node_modules/animejs/dist/modules/waapi/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { utils, waapi } from "animejs";
+
+      const [$start] = utils.$("#start");
+
+      $start.onclick = function () {
+        waapi.animate(".circle", {
+          backgroundColor: "color(display-p3 1.0 0.267 0.267 / 1.0)",
+        });
+      };
+    </script>
+  </body>
+</html>

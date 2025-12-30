@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting started | Documentation | Anime.js</title>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis omnis assumenda doloremque architecto libero alias veritatis atque, molestiae, numquam voluptas iste aliquid! Enim dolorum cumque beatae voluptatibus ipsa ipsam, rerum, placeat nisi officiis quae omnis eum tenetur consectetur non repellat magni. Eveniet quaerat consequatur magni sequi. Animi consequatur repudiandae veritatis facilis, quas error placeat nam cupiditate consequuntur voluptatibus non nulla quidem laboriosam eos totam. Illo magnam iure pariatur repudiandae nihil esse! Veniam qui omnis, quo, quibusdam non nam reprehenderit facilis corrupti ratione ab nesciunt asperiores quisquam eligendi? Suscipit culpa quisquam unde libero doloribus facere nostrum. Inventore harum id excepturi reiciendis nam libero quasi esse velit a, cupiditate voluptatibus voluptate suscipit error, ex repellat ducimus, vel vero odit. Deserunt odio harum neque sapiente, reprehenderit at quae? Neque repellat, minus aut ipsa numquam repudiandae accusantium id, harum ea perspiciatis sit fugiat quam eum nemo. Impedit porro ad quod fugit sapiente! Eveniet nesciunt commodi voluptas alias iste, tempora, laborum voluptates magnam quis labore, itaque unde aliquam! Soluta veniam repudiandae optio esse, saepe consequuntur enim nulla et id ad sapiente tempore asperiores officia neque earum quos explicabo similique voluptatem quo accusamus commodi cumque. Laboriosam dolore obcaecati, nisi nulla a temporibus voluptates sit magni nemo qui, reprehenderit quae iusto iure rem perspiciatis accusamus, voluptatibus aliquid. Dolor rem, fugiat necessitatibus possimus velit quibusdam ad iure sapiente iste? Dolorem, corrupti! Maiores nam facilis soluta, adipisci eveniet doloribus eum illum? Incidunt quis non error maiores iusto laboriosam quo voluptatum quod saepe. Reiciendis necessitatibus quas, optio quos non pariatur repellendus assumenda facilis voluptates ipsum debitis accusantium facere culpa consequuntur eveniet animi. Dignissimos quis, porro debitis provident aperiam ullam? Ipsa placeat inventore odit maxime harum modi, numquam ullam nulla fugiat et consectetur deleniti aspernatur error excepturi distinctio obcaecati labore sunt dignissimos doloremque consequuntur earum autem ratione optio. Aspernatur, unde ad?</p>
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs": "/node_modules/animejs/dist/modules/index.js",
+          "animejs/animation": "/node_modules/animejs/dist/modules/animation/index.js",
+          "animejs/timer": "/node_modules/animejs/dist/modules/timer/index.js",
+          "animejs/timeline": "/node_modules/animejs/dist/modules/timeline/index.js",
+          "animejs/animatable": "/node_modules/animejs/dist/modules/animatable/index.js",
+          "animejs/draggable": "/node_modules/animejs/dist/modules/draggable/index.js",
+          "animejs/scope": "/node_modules/animejs/dist/modules/scope/index.js",
+          "animejs/engine": "/node_modules/animejs/dist/modules/engine/index.js",
+          "animejs/events": "/node_modules/animejs/dist/modules/events/index.js",
+          "animejs/easings": "/node_modules/animejs/dist/modules/easings/index.js",
+          "animejs/utils": "/node_modules/animejs/dist/modules/utils/index.js",
+          "animejs/svg": "/node_modules/animejs/dist/modules/svg/index.js",
+          "animejs/text": "/node_modules/animejs/dist/modules/text/index.js",
+          "animejs/waapi": "/node_modules/animejs/dist/modules/waapi/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { animate } from "animejs/animation";
+      import { splitText } from "animejs/text";
+      import { stagger, random } from "animejs/utils";
+
+      const split = splitText("p");
+
+      animate(split.words, {
+        opacity: () => random(0, 1, 2),
+        delay: stagger(50),
+      });
+    </script>
+  </body>
+</html>
