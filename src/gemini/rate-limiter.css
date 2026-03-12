@@ -1,0 +1,33 @@
+body {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  position: relative;
+  width: 600px;
+  height: 200px;
+}
+svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid red;
+}
+.label {
+  color: white;
+  font-family: sans-serif;
+  position: absolute;
+  top: 45%;
+  font-size: 12px;
+}
+#req-label {
+  left: 10%;
+  border: 1px solid red;
+}
+#res-label {
+  right: 10%;
+  border: 1px solid red;
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anime.js Http Request/Response Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="rate-limiter.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="req-label" class="label">Client</div>
+      <div id="res-label" class="label">Gateway</div>
+
+      <svg viewBox="0 0 600 200">
+        <path
+          id="requestPath"
+          d="M 100 80 L 500 80"
+          stroke="#4a90e2"
+          stroke-width="2"
+          fill="none"
+          stroke-dasharray="10"
+        />
+
+        <path
+          id="responsePath"
+          d="M 500 120 L 100 120"
+          stroke="#f5a623"
+          stroke-width="2"
+          fill="none"
+          stroke-dasharray="10"
+        />
+
+        <circle id="requestDot" r="4" fill="#4a90e2" />
+
+        <circle id="responseDot" r="4" fill="#f5a623" />
+      </svg>
+    </div>
+
+    <script>
+      const { animate } = anime;
+      console.log('x', animate);
+
+      const tl = anime.timeline({
+        easing: "linear",
+        duration: 1500,
+        loop: true,
+      });
+
+      tl
+        // 1. Request moving forward
+        .add({
+          targets: "#requestDot",
+          translateX: anime.path("#requestPath")("x"),
+          translateY: anime.path("#requestPath")("y"),
+          opacity: [0, 1, 1, 0],
+        })
+        // 2. Brief pause at the Gateway
+        .add({
+          duration: 200,
+        })
+        // 3. Response moving backward
+        .add({
+          targets: "#responseDot",
+          translateX: anime.path("#responsePath")("x"),
+          translateY: anime.path("#responsePath")("y"),
+          opacity: [0, 1, 1, 0],
+        });
+
+      // Optional: Animate the dashed lines to look like flowing traffic
+      anime({
+        targets: "#requestPath, #responsePath",
+        strokeDashoffset: [20, 0],
+        duration: 500,
+        easing: "linear",
+        loop: true,
+      });
+    </script>
+  </body>
+</html>
