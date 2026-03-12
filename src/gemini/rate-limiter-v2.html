@@ -84,11 +84,12 @@
         duration: 3500,
         loop: true,
       });
-      // animate(svg.createDrawable("#requestPath, #responsePath"), {
-      //   draw: ['0 1'],
-      //   duration: 1500,
-      //   loop: true,
-      // });
+
+      animate(svg.createDrawable("#responsePath"), {
+        draw: ['0 0', '0 1', '1 1'],
+        duration: 1500,
+        loop: true,
+      });
     </script>
   </body>
 </html>

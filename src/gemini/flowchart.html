@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Ecosystem Levy - Flowchart</title>
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+      }
+
+      .flowchart {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .node {
+        background: #1e293b;
+        border: 2px solid #3b82f6;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        /* Hidden initially so anime.js can reveal them */
+        opacity: 0;
+      }
+
+      .node.full-width {
+        grid-column: span 2;
+        border-color: #10b981; /* Green for final payout */
+      }
+
+      .title {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #93c5fd;
+        margin-bottom: 8px;
+      }
+
+      .node.full-width .title {
+        color: #6ee7b7;
+      }
+
+      .desc {
+        font-size: 0.85em;
+        color: #cbd5e1;
+        line-height: 1.4;
+      }
+
+      .flow-indicator {
+        grid-column: span 2;
+        text-align: center;
+        color: #64748b;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+    </style>
+    <script src="/node_modules/animejs/dist/bundles/anime.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="flowchart">
+      <div class="node">
+        <div class="title">AI Platforms</div>
+        <div class="desc">OpenAI, Mistral, Midjourney</div>
+      </div>
+      <div class="node">
+        <div class="title">AI Users</div>
+        <div class="desc">Subscriptions & API Usage</div>
+      </div>
+
+      <div class="flow-indicator">▼ Consumption & Usage Data ▼</div>
+
+      <div class="node">
+        <div class="title">Levy Collection System</div>
+        <div class="desc">Calculates and routes the tax</div>
+      </div>
+      <div class="node">
+        <div class="title">EU Information Fund</div>
+        <div class="desc">Manages the public treasury</div>
+      </div>
+
+      <div class="flow-indicator">▼ Distribution Requests & Policy ▼</div>
+
+      <div class="node">
+        <div class="title">Policy Board</div>
+        <div class="desc">Sets rates and governance</div>
+      </div>
+      <div class="node">
+        <div class="title">Data-Driven Dist. (DDS)</div>
+        <div class="desc">Calculates attribution & allocations</div>
+      </div>
+
+      <div class="flow-indicator">▼ Final Fund Disbursement ▼</div>
+
+      <div class="node full-width">
+        <div class="title">Ecosystem Contributors</div>
+        <div class="desc">
+          Creative Industries, Journalism, Open-Source Software
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const { animate, stagger } = anime;
+
+      // 1. Cascade the nodes in from the top
+      animate(".node", {
+        translateY: [-30, 0],
+        opacity: [0, 1],
+        duration: 800,
+        delay: stagger(200), // 200ms delay between each box
+        ease: "outBack(1.2)",
+      });
+
+      // 2. Fade in the text flow indicators
+      animate(".flow-indicator", {
+        translateY: [-10, 0],
+        opacity: [0, 1],
+        duration: 600,
+        delay: stagger(300, { start: 1000 }), // Wait until boxes are mostly loaded
+        ease: "outQuad",
+      });
+
+      // 3. Add a continuous glowing/pulsing effect to the final payout box
+      // We use a timeout so it only starts after the initial build-in finishes
+      setTimeout(() => {
+        animate(".full-width", {
+          scale: [1, 1.02, 1],
+          boxShadow: [
+            "0 4px 15px rgba(0,0,0,0.3)",
+            "0 4px 30px rgba(16, 185, 129, 0.4)", // Green glow
+            "0 4px 15px rgba(0,0,0,0.3)",
+          ],
+          duration: 3000,
+          loop: true,
+          ease: "inOutSine",
+        });
+      }, 2500);
+    </script>
+  </body>
+</html>
